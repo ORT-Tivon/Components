@@ -3,33 +3,37 @@
  *  -----------------------
  *  
  *  Author: Asaf Chertkoff (asaf.chertkoff at gmail.com)
+ *  SoC tested: ESP-12E 8266 nodeMCU 
  *  
  *  2/10/2021
  *  Reference:
  *  https://howtomechatronics.com/tutorials/arduino/rotary-encoder-works-use-arduino/
+ *  https://lastminuteengineers.com/rotary-encoder-arduino-tutorial/
  */
  
- #define outputA 6
- #define outputB 7
+ #define outputA D4
+ #define outputB D3
+ #define outputC D5
 
  int counter = 0; 
  int aState;
  int aLastState;  
+ int pressed; 
+ unsigned long lastButtonPress = 0;
 
+ 
  void setup() { 
    pinMode (outputA,INPUT);
    pinMode (outputB,INPUT);
-   
+   pinMode (outputC,INPUT_PULLUP);
+  
    Serial.begin (9600);
-   // Reads the initial state of the outputA
    aLastState = digitalRead(outputA);   
  } 
 
  void loop() { 
-   aState = digitalRead(outputA); // Reads the "current" state of the outputA
-   // If the previous and the current state of the outputA are different, that means a Pulse has occured
+   aState = digitalRead(outputA); 
    if (aState != aLastState){     
-     // If the outputB state is different to the outputA state, that means the encoder is rotating clockwise
      if (digitalRead(outputB) != aState) { 
        counter ++;
      } else {
@@ -38,5 +42,12 @@
      Serial.print("Position: ");
      Serial.println(counter);
    } 
-   aLastState = aState; // Updates the previous state of the outputA with the current state
+   aLastState = aState;
+   pressed = digitalRead(outputC);
+   if (pressed == LOW) {
+    if (millis() - lastButtonPress > 50) {
+      Serial.println("Button pressed!");
+    }
+    lastButtonPress = millis();
+   }
  }
