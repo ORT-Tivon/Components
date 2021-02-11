@@ -14,13 +14,10 @@ void setup() {
 
 void loop() {
   float DC = ktc.readCelsius();
-  // Read temperature as Celsius
-  float DF = ktc.readFahrenheit();
   
    Serial.print("C = "); 
    Serial.print(ktc.readCelsius());
-   Serial.print("\t F = ");
-   Serial.println(ktc.readFahrenheit());
+   Serial.println();
 // 
 
  delay(1000);
