@@ -4,6 +4,7 @@
 int ktcSO = D2;
 int ktcCS = D3;
 int ktcCLK = D4;
+const int buzzer = D5;
 
 MAX6675 ktc(ktcCLK, ktcCS, ktcSO);
   
@@ -13,10 +14,13 @@ void setup() {
 }
 
 void loop() {
-  float DC = ktc.readCelsius();
-  
+   float DC = ktc.readCelsius();
+   
    Serial.print("C = "); 
    Serial.print(ktc.readCelsius());
+   if (DC > 40) {
+    tone(buzzer, 1000, 300);
+   }
    Serial.println();
 // 
 
