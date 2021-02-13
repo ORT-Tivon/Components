@@ -1,0 +1,7 @@
+Sience: 
+https://www.microchip.com/wwwproducts/en/MCP9600
+
+Engineering:
+https://learn.adafruit.com/adafruit-mcp9600-i2c-thermocouple-amplifier
+
+
