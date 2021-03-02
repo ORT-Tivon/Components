@@ -7,6 +7,9 @@
  *  
  *  2/10/2021
  *  Reference:
+ *  Configure nodeMCU:
+ *  https://create.arduino.cc/projecthub/electropeak/getting-started-w-nodemcu-esp8266-on-arduino-ide-28184f 
+ *  Rotery encoder:
  *  https://howtomechatronics.com/tutorials/arduino/rotary-encoder-works-use-arduino/
  *  https://lastminuteengineers.com/rotary-encoder-arduino-tutorial/
  */
